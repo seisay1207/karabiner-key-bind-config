@@ -1,0 +1,45 @@
+{
+    "title": "command + 左右矢印で単語単位移動",
+    "rules": [
+        {
+            "description": "command + 左矢印で単語の先頭に移動",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "left_arrow",
+                        "modifiers": {
+                            "mandatory": ["left_command"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": ["left_option"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "command + 右矢印で単語の末尾に移動",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "right_arrow",
+                        "modifiers": {
+                            "mandatory": ["left_command"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": ["left_option"]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

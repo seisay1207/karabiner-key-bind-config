@@ -17,14 +17,26 @@
                                     "type": "input_source_if",
                                     "input_sources": [
                                         {
-                                            "language": "ja"
+                                            "language": "ja",
+                                            "input_source_id": "com.apple.inputmethod.Japanese"
                                         }
                                     ]
                                 }
                             ]
                         },
                         {
-                            "key_code": "japanese_kana"
+                            "key_code": "japanese_kana",
+                            "conditions": [
+                                {
+                                    "type": "input_source_unless",
+                                    "input_sources": [
+                                        {
+                                            "language": "ja",
+                                            "input_source_id": "com.apple.inputmethod.Japanese"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }

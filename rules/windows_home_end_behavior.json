@@ -1,0 +1,79 @@
+{
+    "title": "Windows互換のHome/Endキー動作",
+    "rules": [
+        {
+            "description": "Homeキーを行の先頭に移動（Windows互換）",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "home"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": ["left_command"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "Endキーを行の末尾に移動（Windows互換）",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "end"
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": ["left_command"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "command + Homeでドキュメントの先頭に移動（Windows互換）",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "home",
+                        "modifiers": {
+                            "mandatory": ["left_command"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "up_arrow",
+                            "modifiers": ["left_command"]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": "command + Endでドキュメントの末尾に移動（Windows互換）",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "end",
+                        "modifiers": {
+                            "mandatory": ["left_command"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "down_arrow",
+                            "modifiers": ["left_command"]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

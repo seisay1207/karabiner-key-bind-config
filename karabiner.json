@@ -36,77 +36,7 @@
             "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "jis" },
             "complex_modifications": {
-                "rules": [
-                    {
-                        "description": "grave_accent_and_tilde キーで英数⇔かなの双方向切り替え",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "grave_accent_and_tilde"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "japanese_eisuu",
-                                        "conditions": [
-                                            {
-                                                "type": "input_source_if",
-                                                "input_sources": [
-                                                    {
-                                                        "language": "ja"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "key_code": "japanese_kana"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "description": "command + 左矢印で単語の先頭に移動",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "left_arrow",
-                                    "modifiers": {
-                                        "mandatory": ["left_command"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_arrow",
-                                        "modifiers": ["left_option"]
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "description": "command + 右矢印で単語の末尾に移動",
-                        "manipulators": [
-                            {
-                                "type": "basic",
-                                "from": {
-                                    "key_code": "right_arrow",
-                                    "modifiers": {
-                                        "mandatory": ["left_command"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": ["left_option"]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                "rules": []
             }
         }
     ]

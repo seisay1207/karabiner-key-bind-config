@@ -1,23 +1,100 @@
 {
-  "title": "〔半角/全角〕→ 入力ソーストグル（Control+Space方式）",
+  "title": "〔半角/全角〕→ 入力切替（Ctrl+Space/IDE除外）",
   "rules": [
     {
-      "description": "半角/全角（LANG5）→ Control+Space で入力ソース切替",
+      "description": "グローバル: 〔半角/全角〕→ Control+Space（IDEを除外）",
       "manipulators": [
         {
           "type": "basic",
           "from": { "key_code": "lang5", "modifiers": { "optional": ["any"] } },
-          "to":   [ { "key_code": "spacebar", "modifiers": ["left_control"] } ]
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.VSCode(Insiders)?$",
+                "^com\\.jetbrains\\..*$",
+                "^com\\.sublimetext\\..*$"
+              ]
+            }
+          ],
+          "to": [ { "key_code": "spacebar", "modifiers": ["left_control"] } ]
         },
         {
           "type": "basic",
           "from": { "key_code": "grave_accent_and_tilde", "modifiers": { "optional": ["any"] } },
-          "to":   [ { "key_code": "spacebar", "modifiers": ["left_control"] } ]
+          "conditions": [
+            {
+              "type": "frontmost_application_unless",
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.VSCode(Insiders)?$",
+                "^com\\.jetbrains\\..*$",
+                "^com\\.sublimetext\\..*$"
+              ]
+            }
+          ],
+          "to": [ { "key_code": "spacebar", "modifiers": ["left_control"] } ]
         }
       ]
     },
     {
-      "description": "（任意）Shift+〔半角/全角〕で ~ を入力できるようにする",
+      "description": "IDE内のみ: 〔半角/全角〕→ 直接 英数/かな 切替（Ctrl+Spaceと衝突させない）",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "lang5", "modifiers": { "optional": ["any"] } },
+          "conditions": [
+            { "type": "frontmost_application_if", "bundle_identifiers": [
+              "^com\\.microsoft\\.VSCode(Insiders)?$",
+              "^com\\.jetbrains\\..*$",
+              "^com\\.sublimetext\\..*$"
+            ]},
+            { "type": "input_source_if", "input_source": [ { "language": "ja" } ] }
+          ],
+          "to": [ { "key_code": "japanese_eisuu" } ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "lang5", "modifiers": { "optional": ["any"] } },
+          "conditions": [
+            { "type": "frontmost_application_if", "bundle_identifiers": [
+              "^com\\.microsoft\\.VSCode(Insiders)?$",
+              "^com\\.jetbrains\\..*$",
+              "^com\\.sublimetext\\..*$"
+            ]},
+            { "type": "input_source_unless", "input_source": [ { "language": "ja" } ] }
+          ],
+          "to": [ { "key_code": "japanese_kana" } ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "grave_accent_and_tilde", "modifiers": { "optional": ["any"] } },
+          "conditions": [
+            { "type": "frontmost_application_if", "bundle_identifiers": [
+              "^com\\.microsoft\\.VSCode(Insiders)?$",
+              "^com\\.jetbrains\\..*$",
+              "^com\\.sublimetext\\..*$"
+            ]},
+            { "type": "input_source_if", "input_source": [ { "language": "ja" } ] }
+          ],
+          "to": [ { "key_code": "japanese_eisuu" } ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "grave_accent_and_tilde", "modifiers": { "optional": ["any"] } },
+          "conditions": [
+            { "type": "frontmost_application_if", "bundle_identifiers": [
+              "^com\\.microsoft\\.VSCode(Insiders)?$",
+              "^com\\.jetbrains\\..*$",
+              "^com\\.sublimetext\\..*$"
+            ]},
+            { "type": "input_source_unless", "input_source": [ { "language": "ja" } ] }
+          ],
+          "to": [ { "key_code": "japanese_kana" } ]
+        }
+      ]
+    },
+    {
+      "description": "（任意）Shift+〔半角/全角〕で ~ を入力",
       "manipulators": [
         {
           "type": "basic",

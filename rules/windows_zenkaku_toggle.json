@@ -1,0 +1,35 @@
+{
+  "title": "〔半角/全角〕→ 入力ソーストグル（Control+Space方式）",
+  "rules": [
+    {
+      "description": "半角/全角（LANG5）→ Control+Space で入力ソース切替",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "lang5", "modifiers": { "optional": ["any"] } },
+          "to":   [ { "key_code": "spacebar", "modifiers": ["left_control"] } ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "grave_accent_and_tilde", "modifiers": { "optional": ["any"] } },
+          "to":   [ { "key_code": "spacebar", "modifiers": ["left_control"] } ]
+        }
+      ]
+    },
+    {
+      "description": "（任意）Shift+〔半角/全角〕で ~ を入力できるようにする",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": { "key_code": "lang5", "modifiers": { "mandatory": ["shift"] } },
+          "to":   [ { "key_code": "grave_accent_and_tilde", "modifiers": ["shift"] } ]
+        },
+        {
+          "type": "basic",
+          "from": { "key_code": "grave_accent_and_tilde", "modifiers": { "mandatory": ["shift"] } },
+          "to":   [ { "key_code": "grave_accent_and_tilde", "modifiers": ["shift"] } ]
+        }
+      ]
+    }
+  ]
+}
